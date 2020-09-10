@@ -108,7 +108,7 @@ const Place = ({
       </ul>
       <footer className="Place__footer">
         <Link
-          to={price != 0 ? `/basket/${area.id}/${item.id}` : "#"}
+          to={price !== 0 ? `/basket/${area.id}/${item.id}` : "#"}
           className="Place__order"
         >
           Оформить заказ ({price})
