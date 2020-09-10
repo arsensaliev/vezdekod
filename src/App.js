@@ -18,93 +18,114 @@ import ThreeTowar from './img/3.png';
 import FourTowar from './img/4.png';
 
 
-const FOOD_AREAS = [{
-	id: 'pizikiva-gallery',
-	name: 'ТРЦ "Им.Пыжикова"',
-	items: [{
-		id: 'kfc',
-		name: 'KFC',
-		link: '/place/pizikiva-gallery/kfc',
-		description: 'Сеть ресторанов быстрого питания',
-		image: kfc,
-		foods: [{
-			id: 'classic',
-			image: FourTowar,
-			name: 'Классик',
-			price: 150,
-		}, {
-			id: 'bigmac',
-			image: OneTowar,
-			name: 'Картофель фри',
-			price: 50,
-		}],
-	}, {
-		id: 'burger-king',
-		name: 'Burger King',
-		link: '/place/pizikiva-gallery/burger-king',
-		description: 'Сеть ресторанов быстрого питания',
-		image: burger,
-		foods: [{
-			id: 'OneTowar',
-			name: 'Товар № 1',
-			composition: 'Состав: по ГОСТу',
-			price: 630,
-			image: OneTowar,
-		}, {
-			id: 'TwoTowar',
-			name: 'Товар № 2',
-			composition: 'Состав: по ГОСТу',
-			price: 450,
-			image: TwoTowar,
-		}, {
-			id: 'ThreeTowar',
-			name: 'Товар № 3',
-			composition: 'Состав: по ГОСТу',
-			price: 800,
-			image: ThreeTowar,
-		}, {
-			id: 'FourthTowar',
-			name: 'Товар № 4',
-			composition: 'Состав по ГОСТу',
-			price: 600,
-			image: FourTowar,
-		}],
-	}, {
-		id: 'macdac',
-		name: 'McDonal\'s',
-		link: '/place/pizikiva-gallery/macdac',
-		description: 'Сеть ресторанов быстрого питания',
-		image: mcdac,
-		foods: [{
-			id: 'hamburger',
-			image: TwoTowar,
-			name: 'Гамбургер',
-			price: 50,
-		}, {
-			id: 'bigmac',
-			image: ThreeTowar,
-			name: 'Биг мак',
-			price: 200,
-		}],
-	}, {
-		id: 'subway',
-		name: 'SubWay',
-		link: '/place/pizikiva-gallery/subway',
-		image: sub,
-		description: 'Сеть ресторанов быстрого питания',
-		foods: [{
-			id: 'melt-sub',
-			image: ThreeTowar,
-			name: 'Сабвей мелт',
-			price: 300,
-		}, {
-			id: 'day-sub',
-			image: OneTowar,
-			name: 'Саб дня',
-			price: 200,
-		}],
-	}],
-}];
+const FOOD_AREAS = [
+  {
+    id: "pizikiva-gallery",
+    name: 'ТРЦ "Им.Пыжикова"',
+    items: [
+      {
+        id: "kfc",
+        name: "KFC",
+        link: "/place/pizikiva-gallery/kfc",
+        description: "Сеть ресторанов быстрого питания",
+        image: kfc,
+        foods: [
+          {
+            id: "classic",
+            image: FourTowar,
+            name: "Классик",
+            price: 150,
+          },
+          {
+            id: "FrenchFries",
+            image: OneTowar,
+            name: "Картофель фри",
+            price: 50,
+          },
+        ],
+      },
+      {
+        id: "burger-king",
+        name: "Burger King",
+        link: "/place/pizikiva-gallery/burger-king",
+        description: "Сеть ресторанов быстрого питания",
+        image: burger,
+        foods: [
+          {
+            id: "OneTowar",
+            name: "Товар № 1",
+            composition: "Состав: по ГОСТу",
+            price: 630,
+            image: OneTowar,
+          },
+          {
+            id: "TwoTowar",
+            name: "Товар № 2",
+            composition: "Состав: по ГОСТу",
+            price: 450,
+            image: TwoTowar,
+          },
+          {
+            id: "ThreeTowar",
+            name: "Товар № 3",
+            composition: "Состав: по ГОСТу",
+            price: 800,
+            image: ThreeTowar,
+          },
+          {
+            id: "FourthTowar",
+            name: "Товар № 4",
+            composition: "Состав по ГОСТу",
+            price: 600,
+            image: FourTowar,
+          },
+        ],
+      },
+      {
+        id: "macdac",
+        name: "McDonal's",
+        link: "/place/pizikiva-gallery/macdac",
+        description: "Сеть ресторанов быстрого питания",
+        image: mcdac,
+        foods: [
+          {
+            id: "hamburger",
+            image: TwoTowar,
+            name: "Гамбургер",
+            price: 50,
+          },
+          {
+            id: "bigmac",
+            image: ThreeTowar,
+            name: "Биг мак",
+            price: 200,
+          },
+        ],
+      },
+      {
+        id: "subway",
+        name: "SubWay",
+        link: "/place/pizikiva-gallery/subway",
+        image: sub,
+        description: "Сеть ресторанов быстрого питания",
+        foods: [
+          {
+            id: "melt-sub",
+            image: ThreeTowar,
+            name: "Сабвей мелт",
+            price: 300,
+          },
+          {
+            id: "day-sub",
+            image: OneTowar,
+            name: "Саб дня",
+            price: 200,
+          },
+        ],
+      },
+    ],
+  },
+];
 
 const placesMap = FOOD_AREAS.reduce((result, area) => {
 	area.items.forEach(item => {

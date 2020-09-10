@@ -14,11 +14,20 @@ const Basket = ({
   foodAreas,
   order,
 }) => {
-  const [faster, setFaster] = useState(true);
-  const [time, setTime] = useState("");
-  const [selfService, setSelfService] = useState(false);
+  const defaultOrderParams = {
+    faster: true,
+    time: "",
+    selfService: false,
+  };
+  const orderParams =
+    JSON.parse(localStorage.getItem("orderParams")) || defaultOrderParams;
+  const [faster, setFaster] = useState(orderParams.faster);
+  const [time, setTime] = useState(orderParams.time);
+  const [selfService, setSelfService] = useState(orderParams.selfService);
   const area = foodAreas.filter((area) => area.id === areaId)[0];
   const item = area.items.filter((item) => item.id === itemId)[0];
+  const saveOrderParams = (params) =>
+    localStorage.setItem("orderParams", JSON.stringify(params));
 
   const [price, products] = useMemo(() => {
     const foodIds = new Set((item.foods || []).map((item) => item.id));
@@ -93,8 +102,13 @@ const Basket = ({
             checked={faster}
             onToggle={() => {
               if (faster) {
+                orderParams.faster = false;
+                saveOrderParams(orderParams);
                 setFaster(false);
               } else {
+                orderParams.faster = true;
+                orderParams.time = "";
+                saveOrderParams(orderParams);
                 setTime("");
                 setFaster(true);
               }
@@ -107,14 +121,22 @@ const Basket = ({
             type="time"
             value={time}
             onFocus={() => {
+              orderParams.faster = false;
+              saveOrderParams(orderParams);
               setFaster(false);
             }}
             onChange={(event) => {
+              const selectedTime = event.target.value;
+              orderParams.faster = false;
+              orderParams.time = selectedTime;
+              saveOrderParams(orderParams);
               setFaster(false);
-              setTime(event.target.value);
+              setTime(selectedTime);
             }}
             onBlur={() => {
               if (time) {
+                orderParams.faster = false;
+                saveOrderParams(orderParams);
                 setFaster(false);
               }
             }}
@@ -124,14 +146,22 @@ const Basket = ({
           <h3>С собой</h3>
           <Checkbox
             checked={selfService}
-            onToggle={() => setSelfService(!selfService)}
+            onToggle={() => {
+              orderParams.selfService = !selfService;
+              saveOrderParams(orderParams);
+              setSelfService(!selfService);
+            }}
           />
         </div>
         <div className="Place__choice-item">
           <h3>На месте</h3>
           <Checkbox
             checked={!selfService}
-            onToggle={() => setSelfService(!setSelfService)}
+            onToggle={() => {
+              orderParams.selfService = !setSelfService;
+              saveOrderParams(orderParams);
+              setSelfService(!setSelfService);
+            }}
           />
         </div>
       </div>
