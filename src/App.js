@@ -127,7 +127,8 @@ const foodsMap = FOOD_AREAS.reduce((result, area) => {
 const App = () => {
 	const [ orderStatuses, setOrderStatuses ] = useState(JSON.parse((localStorage.getItem('orderStatuses') || 'null')) || {});
 	const [ order, setOrder ] = useState(JSON.parse((localStorage.getItem('orders') || 'null')) || {});
-
+	console.log("Order: ", order);
+	console.log("OrderStatuses: ", orderStatuses);
 	return (
 		<Router>
 			<Switch>
@@ -165,7 +166,7 @@ const App = () => {
 						setFinishedOrder={({ itemId }) => {
 							const nextStatuses = {...orderStatuses};
 
-							nextStatuses[itemId] = 'DONE';
+							nextStatuses[itemId] = "CANCELED";
 
 							setOrderStatuses(nextStatuses);
 							localStorage.setItem('orderStatuses', JSON.stringify(nextStatuses));
