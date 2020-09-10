@@ -35,7 +35,7 @@ const Place = ({
 
     return accounting.formatNumber(result, 0, " ");
   }, [order, item]);
-  
+
   return (
     <div className="Place">
       <header className="Place__header">
@@ -108,7 +108,7 @@ const Place = ({
       </ul>
       <footer className="Place__footer">
         <Link
-          to={price !== 0 ? `/basket/${area.id}/${item.id}` : "#"}
+          to={price != 0 ? `/basket/${area.id}/${item.id}` : "#"}
           className="Place__order"
         >
           Оформить заказ ({price})
